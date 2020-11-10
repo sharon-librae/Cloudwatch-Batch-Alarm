@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EC2 Batch Monitor</title>
+<link href="css/singlePageTemplate.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+body {
+    background-color: #FFFFFF;
+}
+</style>
+<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
+<script>var __adobewebfontsappname__="dreamweaver"</script>
+<script src="http://use.edgefonts.net/source-sans-pro:n2:default.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!-- Main Container -->
+<div class="container">
+  <!-- Navigation -->
+  <table width="773" height="1473" border="0" align="center">
+    <tbody>
+      <tr>
+        <th colspan="2" align="center" valign="middle" bgcolor="#FEFEFE"><h2><strong style="text-align: center">EC2 批量生成告警</strong></h2></th>
+      </tr>
+      <tr>
+        <th height="42" colspan="2" bgcolor="#D9D7D7"><p>指标</p></th>
+      </tr>
+      <tr>
+        <th width="393" bgcolor="#D9D7D7"><p>命名空间</p></th>
+        <th width="357" bgcolor="#D9D7D7"><p>AWS/EC2</p></th>
+      </tr>
+      <tr>
+        <th bgcolor="#D9D7D7"><p>指标名称</p></th>
+        <th bgcolor="#D9D7D7"><p id="select" name="select" size="5" multiple="MULTIPLE">
+          <select name="metric" size="5" multiple="MULTIPLE" id="metric">
+            <option value="CPUUtilization" selected="selected">CPUUtilization</option>
+            <option value="DiskReadOps">DiskReadOps</option>
+            <option value="DiskWriteOps">DiskWriteOps</option>
+            <option value="DiskReadBytes">DiskReadBytes</option>
+            <option value="DiskWriteBytes">DiskWriteBytes</option>
+            <option value="NetworkIn">NetworkIn</option>
+            <option value="NetworkOut">NetworkOut</option>
+            <option value="NetworkPacketsIn">NetworkPacketsIn</option>
+            <option value="NetworkPacketsOut">NetworkPacketsOut</option>
+            <option value="MetadataNoToken">MetadataNoToken</option>
+            <option value="CPUCreditUsage">CPUCreditUsage</option>
+            <option value="CPUCreditBalance">CPUCreditBalance</option>
+            <option value="CPUSurplusCreditBalance">CPUSurplusCreditBalance</option>
+            <option value="CPUSurplusCreditsCharged">CPUSurplusCreditsCharged</option>
+            <option value="EBSReadOps">EBSReadOps</option>
+            <option value="EBSWriteOps">EBSWriteOps</option>
+            <option value="EBSReadBytes">EBSReadBytes</option>
+            <option value="EBSWriteBytes">EBSWriteBytes</option>
+            <option value="EBSIOBalance%">EBSIOBalance%</option>
+            <option value="EBSByteBalance%">EBSByteBalance%</option>
+            <option value="StatusCheckFailed">StatusCheckFailed</option>
+            <option value="StatusCheckFailed_Instance">StatusCheckFailed_Instance</option>
+            <option value="StatusCheckFailed_System">StatusCheckFailed_System</option>
+          </select>
+        </p></th>
+      </tr>
+      <tr>
+        <th bgcolor="#D9D7D7">区域</th>
+        <th bgcolor="#D9D7D7"><select name="region" required="required" id="region">
+          <option value="us-east-1">us-east-1</option>
+          <option value="us-east-2">us-east-2</option>
+          <option value="us-west-1">us-west-1</option>
+          <option value="us-west-2">us-west-2</option>
+          <option value="af-south-1">af-south-1</option>
+          <option value="ap-east-1">ap-east-1</option>
+          <option value="ap-south-1">ap-south-1</option>
+          <option value="ap-northeast-3">ap-northeast-3</option>
+          <option value="ap-northeast-2">ap-northeast-2</option>
+          <option value="ap-southeast-1">ap-southeast-1</option>
+          <option value="ap-southeast-2">ap-southeast-2</option>
+          <option value="ap-northeast-1">ap-northeast-1</option>
+          <option value="ca-central-1">ca-central-1</option>
+          <option value="eu-central-1">eu-central-1</option>
+          <option value="eu-west-1">eu-west-1</option>
+          <option value="eu-west-2">eu-west-2</option>
+          <option value="eu-south-1">eu-south-1</option>
+          <option value="eu-west-3">eu-west-3</option>
+          <option value="eu-north-1">eu-north-1</option>
+          <option value="me-south-1">me-south-1</option>
+          <option value="sa-east-1">sa-east-1</option>
+        </select></th>
+      </tr>
+      <tr>
+        <th bgcolor="#D9D7D7"><p>分组类型</p></th>
+        <th bgcolor="#D9D7D7"><p id="select2" name="select2" required="required">
+          <select name="grouptype" required="required" id="grouptype">
+            <option value="AutoScaling group">AutoScaling group名称</option>
+            <option value="Resource group">Resource group名称</option>
+            <option value="Tag">Tag</option>
+            <option value="AMI">AMI ID</option>
+            <option value="All">All</option>
+          </select>
+        </p></th>
+      </tr>
+      <tr>
+        <th height="78" bgcolor="#D9D7D7"><p>分组名称</p>
+          <p>&nbsp;</p>        </th>
+        <th bgcolor="#D9D7D7"><p>
+          <input name="groupvalue" type="text" required="required" id="groupvalue">
+        </p>
+        <p style="font-weight: lighter; font-size: 10px;">如果Group type的类型为All，请在此输入框输入All；如果Group type类型为Tag，请按此格式TagnameTagvalue输入 </p>        </th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7"><p>统计数据</p></th>
+        <th bgcolor="#D9D7D7"><p id="select4" name="select4" required="required">
+          <select name="statistic" required="required" id="statistic">
+            <option value="Average">平均值</option>
+            <option value="Sum">总计</option>
+            <option value="Maximum">最大值</option>
+            <option value="Minimum">最小值</option>
+            <option value="Sample count">样本数</option>
+          </select>
+        </p></th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7">间隔</th>
+        <th bgcolor="#D9D7D7"><select name="period" required="required" id="period">
+          <option value="10 seconds">10秒</option>
+          <option value="30 seconds">30秒</option>
+          <option value="1 minute">1分钟</option>
+          <option value="5 minutes">5分钟</option>
+          <option value="15 minutes">15分钟</option>
+          <option value="1 hour">1小时</option>
+          <option value="6 hour">6小时</option>
+          <option value="1 day">1天</option>
+        </select>        </th>
+      </tr>
+      <tr>
+        <th height="27" colspan="2" bgcolor="#FFFFFF">&nbsp;</th>
+      </tr>
+      <tr>
+        <th height="59" colspan="2" bgcolor="#D9D7D7">条件</th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7"><span id="alarm-configure-type">阈值类型</span></th>
+        <th bgcolor="#D9D7D7">Static</th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7"><span id="alarm-configure-comparison-operator">每当...</span></th>
+        <th bgcolor="#D9D7D7"><select name="comparisonoperator" required="required" id="comparisonoperator">
+          <option value="GreaterThanThreshold">大于</option>
+          <option value="GreaterThanOrEqualToThreshold">大于/等于</option>
+          <option value="LessThanOrEqualToThreshold">小于/等于</option>
+          <option value="LessThanThreshold">小于</option>
+        </select></th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7"><span id="span">比</span></th>
+        <th bgcolor="#D9D7D7"><input name="threshold" type="text" required="required" id="threshold" autocomplete="off" value="10000"></th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7"><span id="span2">要报警的数据点</span></th>
+        <th bgcolor="#D9D7D7"><input name="datapointstoalarm" type="text" id="datapointstoalarm" value="1" size="2">
+          <label for="textfield4">，最大为</label>
+        <input name="evaluationperiods" type="text" id="evaluationperiods" value="1" size="2"></th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7">缺失数据处理</th>
+        <th bgcolor="#D9D7D7"><select name="treatmissingdata" required="required" id="treatmissingdata">
+          <option value="breaching">作为超出阈值处理</option>
+          <option value="notBreaching">作为未超出阈值处理</option>
+          <option value="ignore">作为忽略处理</option>
+          <option value="missing">作为缺失处理</option>
+        </select></th>
+      </tr>
+      <tr>
+        <th height="28" colspan="2" bgcolor="#FFFFFF">&nbsp;</th>
+      </tr>
+      <tr>
+        <th height="59" colspan="2" bgcolor="#D9D7D7">通知</th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7"><span id="notification-action-state-1">警报状态触发器</span></th>
+        <th bgcolor="#D9D7D7"><select name="notification" required="required" id="notification">
+          <option value="In alarm">警报中</option>
+          <option value="OK">确定</option>
+          <option value="Insufficient data">数据不足</option>
+          <option value="None">不设置警报</option>
+        </select></th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7">使用现有SNS主题 ARN</th>
+        <th bgcolor="#D9D7D7"><input type="text" name="snstopic" id="snstopic"></th>
+      </tr>
+      <tr>
+        <th height="27" colspan="2" bgcolor="#FFFFFF">&nbsp;</th>
+      </tr>
+      <tr>
+        <th height="59" colspan="2" bgcolor="#D9D7D7">EC2操作</th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7">警报状态触发器</th>
+        <th bgcolor="#D9D7D7"><select name="ec2alarm" required="required" id="ec2alarm">
+          <option value="In alarm">警报中</option>
+          <option value="OK">确定</option>
+          <option value="Insufficient data">数据不足</option>
+          <option value="None">不设置警报</option>
+        </select></th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7">采取以下操作…</th>
+        <th bgcolor="#D9D7D7"><select name="ec2action" required="required" id="ec2action">
+          <option value="recover">恢复此实例</option>
+          <option value="stop">停止此实例</option>
+          <option value="terminate">终止此实例</option>
+          <option value="reboot">重启此实例</option>
+        </select></th>
+      </tr>
+      <tr>
+        <th height="32" colspan="2" bgcolor="#FFFFFF">&nbsp;</th>
+      </tr>
+      <tr>
+        <th height="59" colspan="2" bgcolor="#D9D7D7">名称和描述</th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7">警报名称前缀</th>
+        <th bgcolor="#D9D7D7"><input type="text" name="alarmnameprefix" id="alarmnameprefix"></th>
+      </tr>
+      <tr>
+        <th height="59" bgcolor="#D9D7D7"><p>警报描述 – 可选</em></p></th>
+        <th bgcolor="#D9D7D7"><p id="select3" name="select3" >
+          <input type="text" name="description" id="description">
+        </p></th>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    <button id="Submit">提交</button>
+  </p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
+<div id="result"></div>
+
+
+<script type="text/javascript">
+
+  var result = document.getElementById('result');
+  var Submit = document.getElementById('Submit');
+
+  var websocket_url= "http://127.0.0.1:5000/";
+
+  var socket = io(websocket_url);
+
+  socket.connect();
+
+
+  Submit.addEventListener('click', function() {
+      var regions = document.getElementById('region');
+      var region = regions.options[regions.selectedIndex].value;
+      var metrics = document.getElementById('metric');
+      var grouptypes = document.getElementById('grouptype');
+      var grouptype = grouptypes.options[grouptypes.selectedIndex].value;
+      var groupvalue = document.getElementById('groupvalue').value;
+      var statistics = document.getElementById('statistic');
+      var statistic = statistics.options[statistics.selectedIndex].value;
+      var periods = document.getElementById('period');
+      var period = periods.options[periods.selectedIndex].value;
+      var comparisonoperators = document.getElementById('comparisonoperator');
+      var comparisonoperator = comparisonoperators.options[comparisonoperators.selectedIndex].value;
+      var threshold = Number(document.getElementById('threshold').value);
+      var datapointstoalarm = Number(document.getElementById('datapointstoalarm').value);
+      var evaluationperiods = Number(document.getElementById('evaluationperiods').value);
+      var treatmissingdatas = document.getElementById('treatmissingdata');
+      var treatmissingdata = treatmissingdatas.options[treatmissingdatas.selectedIndex].value;
+      var notifications = document.getElementById('notification');
+      var notification = notifications.options[notifications.selectedIndex].value;
+      var snstopic = document.getElementById('snstopic').value;
+      var ec2alarms = document.getElementById('ec2alarm');
+      var ec2alarm = ec2alarms.options[ec2alarms.selectedIndex].value;
+      var ec2actions = document.getElementById('ec2action');
+      var ec2action = ec2actions.options[ec2actions.selectedIndex].value;
+      var alarmnameprefix = document.getElementById('alarmnameprefix').value;
+      var description = document.getElementById('description').value;
+
+      var metriclist = new Array();
+      var i = 0;
+
+      for(j=0;j<metrics.length;j++){
+        if(metrics.options[j].selected){
+          metriclist[i] = metrics.options[j].value;
+          i = i + 1;
+        }
+      }
+
+      var info = {
+        'service':'EC2',
+        'metrics': metriclist,
+        'statistic': statistic,
+        'period': period,
+        'comparisonoperator': comparisonoperator,
+        'threshold': threshold,
+        'datapointstoalarm': datapointstoalarm,
+        'treatmissingdata': treatmissingdata,
+        'evaluationperiods': evaluationperiods,
+        'alarmnameprefix': alarmnameprefix,
+        'description': description,
+        'snstopic': snstopic,
+        'ec2action': ec2action,
+        'grouptype': grouptype,
+        'groupvalue': groupvalue,
+        'region': region,
+        'notification': notification,
+        'ec2alarm': ec2alarm
+      }
+
+      socket.emit('process',JSON.stringify(info));
+      result.innerHTML = 'Processing';
+
+      socket.on('response',function (data) {
+        result.innerHTML = JSON.stringify(data.message);
+      });
+
+  }, false);
+
+
+
+</script>
+
+<!-- Main Container Ends -->
+</body>
+</html>
