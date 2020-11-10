@@ -112,7 +112,7 @@ body {
         <th bgcolor="#D9D7D7"><p>
           <input name="groupvalue" type="text" required="required" id="groupvalue">
         </p>
-        <p style="font-weight: lighter; font-size: 10px;">如果Group type的类型为All，请在此输入框输入All；如果Group type类型为Tag，请按此格式TagnameTagvalue输入 </p>        </th>
+        <p style="font-weight: lighter; font-size: 10px;">如果Group type的类型为All，请在此输入框输入All；如果Group type类型为Tag，请按此格式Tagname:Tagvalue输入 </p>        </th>
       </tr>
       <tr>
         <th height="59" bgcolor="#D9D7D7"><p>统计数据</p></th>
@@ -252,7 +252,7 @@ body {
   var result = document.getElementById('result');
   var Submit = document.getElementById('Submit');
 
-  var websocket_url= "http://127.0.0.1:5000/";
+  var websocket_url= "http://"+window.location.hostname+":5000/";
 
   var socket = io(websocket_url);
 

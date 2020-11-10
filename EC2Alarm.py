@@ -161,7 +161,7 @@ def ec2_list(grouptype, groupvalue,my_config):
             ],
         )
         ec2list = autoscaling_response['AutoScalingGroups'][0]['Instances']
-        print(ec2list)
+        
     elif grouptype == 'Resource group':
         clientrg = boto3.client('resource-groups', config=my_config)
         clientrg_response = clientrg.list_group_resources(
