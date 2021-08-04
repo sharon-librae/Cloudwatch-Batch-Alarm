@@ -127,7 +127,10 @@ def alarm_action(notifications,snstopic,ec2alarm,region,ec2action):
     if notifications == 'In alarm':
         alarmactions.append(snstopic)
     if ec2alarm == 'In alarm':
-        alarmactions.append('arn:aws:automate:' + region + ':ec2:'+ec2action)
+        if region != 'cn-north-1' and region != 'cn-northwest-1':
+            alarmactions.append('arn:aws:automate:' + region + ':ec2:'+ec2action)
+        else:
+            alarmactions.append('arn:aws-cn:automate:' + region + ':ec2:' + ec2action)
     return alarmactions
 
 
@@ -137,7 +140,10 @@ def ok_action(notifications,snstopic,ec2alarm,region,ec2action):
     if notifications == 'OK':
         okactions.append(snstopic)
     if ec2alarm == 'OK':
-        okactions.append('arn:aws:automate:' + region + ':ec2:' + ec2action)
+        if region != 'cn-north-1' and region != 'cn-northwest-1':
+            okactions.append('arn:aws:automate:' + region + ':ec2:' + ec2action)
+        else:
+            okactions.append('arn:aws-cn:automate:' + region + ':ec2:' + ec2action)
     return okactions
 
 
@@ -147,7 +153,10 @@ def insufficient_action(notifications,snstopic,ec2alarm,region,ec2action):
     if notifications == 'Insufficient data':
         insufficientdataactions.append(snstopic)
     if ec2alarm == 'Insufficient data':
-        insufficientdataactions.append('arn:aws:automate:' + region + ':ec2:' + ec2action)
+        if region != 'cn-north-1' and region != 'cn-northwest-1':
+            insufficientdataactions.append('arn:aws:automate:' + region + ':ec2:' + ec2action)
+        else:
+            insufficientdataactions.append('arn:aws-cn:automate:' + region + ':ec2:' + ec2action)
     return insufficientdataactions
 
 
