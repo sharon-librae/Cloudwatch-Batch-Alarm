@@ -1,0 +1,362 @@
+{
+  "version": "11.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "BatchMonitor": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "BatchMonitor.template.json",
+        "validateOnSynth": false
+      },
+      "metadata": {
+        "/BatchMonitor/BatchMonitor VPC/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BatchMonitorVPCF56464D9",
+            "trace": [
+              "new Vpc (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:355:25)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/BatchMonitor VPC/publicSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BatchMonitorVPCpublicSubnet1Subnet96C31F16",
+            "trace": [
+              "new Subnet (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:679:24)",
+              "new PublicSubnet (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:844:9)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:577:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:561:32)",
+              "Vpc.createSubnets (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:557:18)",
+              "new Vpc (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:376:14)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/BatchMonitor VPC/publicSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BatchMonitorVPCpublicSubnet1RouteTable3A982437",
+            "trace": [
+              "new Subnet (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:695:23)",
+              "new PublicSubnet (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:844:9)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:577:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:561:32)",
+              "Vpc.createSubnets (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:557:18)",
+              "new Vpc (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:376:14)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/BatchMonitor VPC/publicSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BatchMonitorVPCpublicSubnet1RouteTableAssociation1C3882CC",
+            "trace": [
+              "new Subnet (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:700:9)",
+              "new PublicSubnet (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:844:9)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:577:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:561:32)",
+              "Vpc.createSubnets (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:557:18)",
+              "new Vpc (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:376:14)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/BatchMonitor VPC/publicSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BatchMonitorVPCpublicSubnet1DefaultRouteE1685AEF",
+            "trace": [
+              "PublicSubnet.addDefaultInternetRoute (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:735:23)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:388:30",
+              "Array.forEach (<anonymous>)",
+              "new Vpc (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:387:32)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/BatchMonitor VPC/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BatchMonitorVPCIGW3BD2C9DA",
+            "trace": [
+              "new Vpc (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:380:25)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/BatchMonitor VPC/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BatchMonitorVPCVPCGW1FC5A984",
+            "trace": [
+              "new Vpc (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:383:25)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/BatchMonitor/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BatchMonitorCD5739E2",
+            "trace": [
+              "new Role (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-iam/lib/role.js:72:22)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/instance type": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "instancetype",
+            "trace": [
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/key name": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "keyname",
+            "trace": [
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/visit ip": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "visitip",
+            "trace": [
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/SGForBatchMonitor/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SGForBatchMonitor119ABD15",
+            "trace": [
+              "new SecurityGroup (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/security-group.js:213:30)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/Instance/InstanceProfile": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "InstanceInstanceProfileAB5AEF02",
+            "trace": [
+              "new Instance (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/instance.js:50:28)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/Instance/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "InstanceC1063A87",
+            "trace": [
+              "new Instance (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/instance.js:85:25)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
+            "trace": [
+              "Function.fromStringParameterAttributes (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ssm/lib/parameter.js:134:15)",
+              "Function.valueForTypedStringParameter (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ssm/lib/parameter.js:208:21)",
+              "AmazonLinuxImage.getImage (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/machine-image.js:127:41)",
+              "new Instance (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/aws-ec2/lib/instance.js:54:48)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/connection ip": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "connectionip",
+            "trace": [
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:58",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "Kernel._create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8154:34)",
+              "Kernel.create (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7895:29)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:22:30)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/private/synthesis.js:128:9",
+              "visit (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/private/synthesis.js:185:9)",
+              "visit (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/private/synthesis.js:182:9)",
+              "injectMetadataResources (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/private/synthesis.js:117:5)",
+              "Object.synthesize (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/private/synthesis.js:17:5)",
+              "App.synth (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/stage.js:100:41)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7970:134",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7970:107",
+              "Kernel._ensureSync (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8563:28)",
+              "Kernel.invoke (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7970:34)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/BatchMonitor/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable",
+            "trace": [
+              "new MetadataResource (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:30:35)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/private/synthesis.js:128:9",
+              "visit (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/private/synthesis.js:185:9)",
+              "visit (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/private/synthesis.js:182:9)",
+              "injectMetadataResources (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/private/synthesis.js:117:5)",
+              "Object.synthesize (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/private/synthesis.js:17:5)",
+              "App.synth (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/jsii-kernel-AWWsxH/node_modules/@aws-cdk/core/lib/stage.js:100:41)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7970:134",
+              "Kernel._wrapSandboxCode (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8582:24)",
+              "/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7970:107",
+              "Kernel._ensureSync (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:8563:28)",
+              "Kernel.invoke (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:7970:34)",
+              "KernelHost.processRequest (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9479:36)",
+              "KernelHost.run (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9442:22)",
+              "Immediate._onImmediate (/private/var/folders/5v/k0yyg7053tsdqd28v177kp9hqf83vs/T/tmpmlfnmugv/lib/program.js:9443:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ]
+      },
+      "displayName": "BatchMonitor"
+    }
+  }
+}

@@ -1,0 +1,566 @@
+{
+  "Resources": {
+    "BatchMonitorVPCF56464D9": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "10.0.0.0/28",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "BatchMonitor/BatchMonitor VPC"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "BatchMonitor/BatchMonitor VPC/Resource"
+      }
+    },
+    "BatchMonitorVPCpublicSubnet1Subnet96C31F16": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.0.0.0/28",
+        "VpcId": {
+          "Ref": "BatchMonitorVPCF56464D9"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "public"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public"
+          },
+          {
+            "Key": "Name",
+            "Value": "BatchMonitor/BatchMonitor VPC/publicSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "BatchMonitor/BatchMonitor VPC/publicSubnet1/Subnet"
+      }
+    },
+    "BatchMonitorVPCpublicSubnet1RouteTable3A982437": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "BatchMonitorVPCF56464D9"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "BatchMonitor/BatchMonitor VPC/publicSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "BatchMonitor/BatchMonitor VPC/publicSubnet1/RouteTable"
+      }
+    },
+    "BatchMonitorVPCpublicSubnet1RouteTableAssociation1C3882CC": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "BatchMonitorVPCpublicSubnet1RouteTable3A982437"
+        },
+        "SubnetId": {
+          "Ref": "BatchMonitorVPCpublicSubnet1Subnet96C31F16"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "BatchMonitor/BatchMonitor VPC/publicSubnet1/RouteTableAssociation"
+      }
+    },
+    "BatchMonitorVPCpublicSubnet1DefaultRouteE1685AEF": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "BatchMonitorVPCpublicSubnet1RouteTable3A982437"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "BatchMonitorVPCIGW3BD2C9DA"
+        }
+      },
+      "DependsOn": [
+        "BatchMonitorVPCVPCGW1FC5A984"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "BatchMonitor/BatchMonitor VPC/publicSubnet1/DefaultRoute"
+      }
+    },
+    "BatchMonitorVPCIGW3BD2C9DA": {
+      "Type": "AWS::EC2::InternetGateway",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "BatchMonitor/BatchMonitor VPC"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "BatchMonitor/BatchMonitor VPC/IGW"
+      }
+    },
+    "BatchMonitorVPCVPCGW1FC5A984": {
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+      "Properties": {
+        "VpcId": {
+          "Ref": "BatchMonitorVPCF56464D9"
+        },
+        "InternetGatewayId": {
+          "Ref": "BatchMonitorVPCIGW3BD2C9DA"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "BatchMonitor/BatchMonitor VPC/VPCGW"
+      }
+    },
+    "BatchMonitorCD5739E2": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "ec2.",
+                      {
+                        "Ref": "AWS::URLSuffix"
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/AutoScalingReadOnlyAccess"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/AmazonEC2ReadOnlyAccess"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/CloudWatchFullAccess"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/AWSResourceGroupsReadOnlyAccess"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "BatchMonitor/BatchMonitor/Resource"
+      }
+    },
+    "SGForBatchMonitor119ABD15": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Security group for Batch monitoring",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": {
+              "Ref": "visitip"
+            },
+            "Description": "SSH from ip",
+            "FromPort": 22,
+            "IpProtocol": "tcp",
+            "ToPort": 22
+          },
+          {
+            "CidrIp": {
+              "Ref": "visitip"
+            },
+            "Description": "HTTP connection from ip",
+            "FromPort": 80,
+            "IpProtocol": "tcp",
+            "ToPort": 80
+          },
+          {
+            "CidrIp": {
+              "Ref": "visitip"
+            },
+            "Description": "Server port",
+            "FromPort": 5000,
+            "IpProtocol": "tcp",
+            "ToPort": 5000
+          }
+        ],
+        "VpcId": {
+          "Ref": "BatchMonitorVPCF56464D9"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "BatchMonitor/SGForBatchMonitor/Resource"
+      }
+    },
+    "InstanceInstanceProfileAB5AEF02": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "BatchMonitorCD5739E2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "BatchMonitor/Instance/InstanceProfile"
+      }
+    },
+    "InstanceC1063A87": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "IamInstanceProfile": {
+          "Ref": "InstanceInstanceProfileAB5AEF02"
+        },
+        "ImageId": {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+        },
+        "InstanceType": {
+          "Ref": "instancetype"
+        },
+        "KeyName": {
+          "Ref": "keyname"
+        },
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "SGForBatchMonitor119ABD15",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetId": {
+          "Ref": "BatchMonitorVPCpublicSubnet1Subnet96C31F16"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "BatchMonitor/Instance"
+          }
+        ],
+        "UserData": {
+          "Fn::Base64": "#!/bin/bash\nyum install -y python3\ncurl -O https://bootstrap.pypa.io/get-pip.py\npython3 get-pip.py --user\npip3 install boto3\npip3 install flask\npip3 install flask_socketio\npip3 install eventlet\npip3 install gevent\npip3 install gevent-websocket\nyum install -y git\nyum install -y httpd\nsystemctl start httpd\nsystemctl enable httpd\ncd /home/ec2-user\ngit clone https://github.com/sharon-librae/Cloudwatch-Batch-Alarm.git\ncd Cloudwatch-Batch-Alarm/\nmv cloudwatch.html /var/www/html\nchmod +x start.sh\npython3 createAlarm.py\n"
+        }
+      },
+      "DependsOn": [
+        "BatchMonitorCD5739E2"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "BatchMonitor/Instance/Resource"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAAE1VPwW7CMAz9Fu4hwCYOuw31gDgRtYh7aozwaJMqcYSqKP9OQ8u6nfz83vOzvZGb9VauF9/64Zdwua8iWIcyVqzhLkr0NjhAUVyN0k63yOhycwzcBRaFNZ5dAM7cX/MgXIjJmiRycET4kPHcQdbOqhAq1A1BFWqDr9kZlTYwnnTd4MzP3M57C6Rz8q85g4MZDhuce8340P20Zup2PDxza9GwqBCCI+73zobuteAfcRje0QamyBEnQbqVsbTjRe/6lpWzV2owpSRUzzdrVp/yS24XP55o6YJhalGWY30CbTSP/W0BAAA="
+      },
+      "Metadata": {
+        "aws:cdk:path": "BatchMonitor/CDKMetadata/Default"
+      },
+      "Condition": "CDKMetadataAvailable"
+    }
+  },
+  "Parameters": {
+    "instancetype": {
+      "Type": "String",
+      "Description": "the type of instance"
+    },
+    "keyname": {
+      "Type": "String",
+      "Description": "SSH key pair Name for accessing EC2"
+    },
+    "visitip": {
+      "Type": "String",
+      "Description": "the ip connect to server, format: x.x.x.x/x"
+    },
+    "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": {
+      "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+      "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+    }
+  },
+  "Outputs": {
+    "connectionip": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            {
+              "Fn::GetAtt": [
+                "InstanceC1063A87",
+                "PublicIp"
+              ]
+            },
+            "/cloudwatch.html"
+          ]
+        ]
+      }
+    }
+  },
+  "Conditions": {
+    "CDKMetadataAvailable": {
+      "Fn::Or": [
+        {
+          "Fn::Or": [
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "af-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-east-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-northeast-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-northeast-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-southeast-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-southeast-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ca-central-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "cn-north-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "cn-northwest-1"
+              ]
+            }
+          ]
+        },
+        {
+          "Fn::Or": [
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-central-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-north-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-west-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-west-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-west-3"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "me-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "sa-east-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-east-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-east-2"
+              ]
+            }
+          ]
+        },
+        {
+          "Fn::Or": [
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-west-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-west-2"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+README.md
+setup.py
+batch_monitor/batch_monitor.egg-info/PKG-INFO
+batch_monitor/batch_monitor.egg-info/SOURCES.txt
+batch_monitor/batch_monitor.egg-info/dependency_links.txt
+batch_monitor/batch_monitor.egg-info/requires.txt
+batch_monitor/batch_monitor.egg-info/top_level.txt
